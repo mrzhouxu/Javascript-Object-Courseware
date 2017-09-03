@@ -515,11 +515,35 @@ person1.name = "Greg";
 alert(person1.name);//Greg   来自实例
 alert(person2.name);//Nocholas    来自原型
 
+delete person1.name; //删除
 
+alert(person1.name);//Nocholas   来自实例
+alert(person2.name);//Nocholas    来自原型
 
+hasOwnProperty();//检测一个属性是存在于实例中，还是存在于原型中。true/false   实例/原型
 
 
 [slide]
+# 原型与in操作符
+有两种方式使用in操作符：单独使用和在for-in循环中使用。
+在单独使用时，in操作符会在通过对象能够访问给定属性时返回true，不论属性存在于实例还是原型中。
+function Person(){
+	
+}
+Person.prototype.name = "Nicholas";
+Person.prototype.age = 29;
+Person.prototype.job = "Software Engineer";
+Person.prototype.sayName = function(){
+	alert(this.name);
+}
+var person1 = new Person();
+var person2 = new Person();
+
+alert(person1.hasOwnProperty("name"));//false 原型
+alert("name" in person1);//true 
+153页
+
+
 [slide]
 [slide]
 [slide]
