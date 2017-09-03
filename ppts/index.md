@@ -479,8 +479,9 @@ result = person1.sayName == person2.sayName;
 # 原型
 	> ### 无论什么时候，只要创建了一个新的函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。
 
-<div class="help">在默认情况下，所有原型对象都会自动获得一个 constructor(构造函数)属性，这个属性包含一个指向 prototype 属性所在函数 的指针，</div>
-
+<div class="help">在默认情况下，所有原型对象都会自动获得一个 constructor(构造函数)属性，这个属性包含一个指向 prototype 属性所在函数 的指针，例如前面的例子，Person.prototype.constructor 指向Person。通过这个构造函数，可以继续为原型对象添加其他的属性和方法。</div>
+----
+![](/img/Prototype.png)
 
 
 [slide]
