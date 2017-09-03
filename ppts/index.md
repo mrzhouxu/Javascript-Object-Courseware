@@ -483,6 +483,19 @@ result = person1.sayName == person2.sayName;
 ----
 ![](/img/Prototype.png)
 
+我们在所有的视线中都无法访问[[Prototype]]，但可以通过isPrototypeOf()来确定对象嘴贱是否存在这种关系。
+
+Person.prototype.isPrototypeOf(person1);//true
+Person.prototype.isPrototypeOf(person2);//true
+
+Object.getPrototypeOf();//返回这个对象的原型
+Object.getPrototypeOf(person1) == Person.prototype; //true
+Object.getPrototypeOf(person1).name;//
+
+每当代码兑取某个对象的某个属性时，都会执行一次搜索，搜索给定名字的属性。
+搜索有个顺序 先从对象实例本山开始  找到了返回该属性的值，如果没有找到，则继续搜索指针指向的原型对象。
+
+
 
 [slide]
 [slide]
