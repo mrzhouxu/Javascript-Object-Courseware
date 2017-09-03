@@ -493,7 +493,29 @@ Object.getPrototypeOf(person1) == Person.prototype; //true
 Object.getPrototypeOf(person1).name;//
 
 每当代码兑取某个对象的某个属性时，都会执行一次搜索，搜索给定名字的属性。
-搜索有个顺序 先从对象实例本山开始  找到了返回该属性的值，如果没有找到，则继续搜索指针指向的原型对象。
+搜索有个顺序 先从对象实例本山开始  找到了返回该属性的值，如果没有找到，则继续搜索指针指向的原型对象。也就是搜索两次
+第一次搜索属于自己的属性，第二次搜索原型里面的属性，这正是多个对象实例共享原型所保存的属性和方法的基本原理。
+
+
+缺点：如果我们创建的属性与实例原型中的属性同名，那么原型中的属性将会被屏蔽。
+像这样：
+function Person(){
+	
+}
+Person.prototype.name = "Nicholas";
+Person.prototype.age = 29;
+Person.prototype.job = "Software Engineer";
+Person.prototype.sayName = function(){
+	alert(this.name);
+}
+var person1 = new Person();
+var person2 = new Person();
+
+person1.name = "Greg";
+alert(person1.name);//Greg   来自实例
+alert(person2.name);//Nocholas    来自原型
+
+
 
 
 
