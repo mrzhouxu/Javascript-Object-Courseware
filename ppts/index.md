@@ -541,7 +541,27 @@ var person2 = new Person();
 
 alert(person1.hasOwnProperty("name"));//false 原型
 alert("name" in person1);//true 
-153页
+
+Object.keys //返回一个包含所有可枚举属性的字符串数组
+function Person(){
+	
+}
+Person.prototype.name = "Nicholas";
+Person.prototype.age = 29;
+Person.prototype.job = "Software Engineer";
+Person.prototype.sayName = function(){
+	alert(this.name);
+}
+var keys = Object.keys(Person.prototype);
+alert(keys);//"name,age,job,sayName"
+Object.keys //如果是通过实例调用，则不包含原型属性
+var p1 = new Person();
+p1.name = "ZhangSan";
+p1.age = 31;
+var p1keys = Object.keys(p1);
+alert(p1keys);//"name,age"
+Object.getOwnPropertyNames();//154页
+
 
 
 [slide]
