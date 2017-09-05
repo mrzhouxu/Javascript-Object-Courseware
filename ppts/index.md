@@ -629,7 +629,7 @@ String.prototype.startsWith = function(text){
 var msg = "Hello world!";
 alert(msg.startsWith("Hello"));//true
 
-
+158
 [slide]
 [slide]
 [slide]
