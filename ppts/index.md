@@ -560,13 +560,76 @@ p1.name = "ZhangSan";
 p1.age = 31;
 var p1keys = Object.keys(p1);
 alert(p1keys);//"name,age"
-Object.getOwnPropertyNames();//154页
-
-
+Object.getOwnPropertyNames();//不可枚举的constructor也可以列举出来
 
 [slide]
+更简单的原型语法
+用一个包含所有属性和方法的对象字面量来重写整个原型对象。
+function Person(){}
+Person.prototype = {
+	name:"ZhangSan",
+	age:21,
+	job:'Software Englineer',
+	sayName:function(){
+		alert(this.name);
+	}
+}
+我们将Person.prototype设置为等于一个以对象字面量形式创建的新对象。
+最终结果相同，但是 在这里 constructor属性不再指向Person了。
+因为没创建一个函数，就会同时创建他的prototype对象，这个对象会自动火鹤constructor属性。
+而这里我们以对象字面量形式完全重写了默认的prototype对象，因此constructor属性也就变成了新对象的constructor属性。（指向Object构造函数）不再指向Person函数。
+
+var person1 = new Person();
+alert(person1.constructor == Person);//false
+alert(person1.constructor == Object);//true
+如果想让他constructor属性指向Person
+function Person(){}
+Person.prototype = {
+	constructor:Person,
+	name:"ZhangSan",
+	age:21,
+	job:'Software Englineer',
+	sayName:function(){
+		alert(this.name);
+	}
+}
+
 [slide]
+原型的动态性
+var friend = new Person();
+Person.prototype.sayHi = function(){
+	alert("Hi!");
+};
+friend.sayHi();//"Hi!"
+
+----
+function Person(){}
+var friend = new Person();
+Person.prototype = {
+	constructor:Person,
+	name:"ZhangSan",
+	age:29,
+	job:"Software Engineer",
+	sayName:function(){
+		alert(this.name);
+	}
+}
+friend.sayName();//error
+
+![](/img/friendPerson.png)
+
+从图中可以看出，重写原型对象切断了现有原型与任何之前存在的对象实例之间的联系；他们引用的仍然是最初的原型。
+
 [slide]
+原生对象的原型
+像Object、Number、String等原生的对象，如果里面没有你想要的方法你可也修改他们的原型，可以随时添加方法。
+String.prototype.startsWith = function(text){
+	return this.indexOf(text) == 0;
+}
+var msg = "Hello world!";
+alert(msg.startsWith("Hello"));//true
+
+
 [slide]
 [slide]
 [slide]
