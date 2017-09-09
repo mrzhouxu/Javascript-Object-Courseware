@@ -1,7 +1,7 @@
 ```markdown
 title: 面向对象的程序设计
 speaker: 周旭
-url: nodeppt start -p 5210 -w    /?_multiscreen=1
+url: nodeppt start -p 520 -w    /?_multiscreen=1
 transition: zoomin
 headFiles:/css/demo.css,/css/index.css
 files: /js/demo.js,/js/zoom.js,/js/index.js
